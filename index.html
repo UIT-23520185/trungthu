@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chúc Mừng Trung Thu</title>
+    <!-- Thêm Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@300;600&family=Lora:wght@400;700&display=swap" rel="stylesheet">
+    <!-- Thêm Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+            text-align: center;
+            padding: 0;
+            overflow: hidden;
+            background: linear-gradient(120deg, #fbc2eb, #a6c0fe); /* Nền gradient đẹp mắt */
+            color: #333;
+        }
+        .background-animation {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: url('https://images.unsplash.com/photo-1496362451374-72b2503c4c51') no-repeat center center fixed;
+            background-size: cover;
+            animation: zoomBackground 20s infinite alternate; /* Hiệu ứng zoom cho nền */
+        }
+        @keyframes zoomBackground {
+            0% { background-size: 100%; }
+            100% { background-size: 110%; }
+        }
+        .container {
+            background: rgba(255, 255, 255, 0.9); /* Nền trắng trong suốt */
+            border-radius: 20px;
+            padding: 40px;
+            margin: 50px auto;
+            width: 80%;
+            max-width: 600px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            position: relative;
+        }
+        h1 {
+            font-family: 'Pacifico', cursive;
+            color: #e91e63; /* Màu hồng đậm */
+            font-size: 3em;
+            margin: 0;
+            animation: bounce 2s infinite; /* Hiệu ứng nảy cho tiêu đề */
+        }
+        p {
+            font-family: 'Lora', serif; /* Phông chữ mới cho lời chúc */
+            font-size: 1.2em;
+            color: #ff69b4; /* Màu chữ hồng nhạt */
+            margin: 20px 0;
+            animation: fadeInUp 1.5s ease-in-out; /* Hiệu ứng bay lên cho đoạn văn */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+        .fa-heart {
+            color: #ff69b4; /* Màu trái tim */
+            font-size: 1.5em;
+        }
+        button {
+            background-color: #ff4081; /* Màu nút hồng sáng */
+            border: none;
+            color: white;
+            padding: 15px 30px;
+            font-size: 1.2em;
+            cursor: pointer;
+            border-radius: 25px;
+            transition: background-color 0.3s ease;
+            animation: pulse 2s infinite; /* Hiệu ứng nhịp tim cho nút */
+        }
+        button:hover {
+            background-color: #e91e63; /* Màu nút khi di chuột vào */
+        }
+        .heart {
+            position: absolute;
+            font-size: 2em;
+            color: #ff4081;
+            animation: heartBeat 1s infinite; /* Hiệu ứng nhấp nháy cho trái tim */
+            opacity: 0;
+            pointer-events: none; /* Ngăn không cho trái tim ảnh hưởng đến sự kiện chuột */
+        }
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-20px); }
+            60% { transform: translateY(-10px); }
+        }
+        @keyframes fadeInUp {
+            0% { opacity: 0; transform: translateY(20px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+        @keyframes heartBeat {
+            0% { transform: scale(1); }
+            20% { transform: scale(1.2); }
+            40% { transform: scale(1); }
+            60% { transform: scale(1.2); }
+            80% { transform: scale(1); }
+            100% { transform: scale(1); }
+        }
+    </style>
+</head>
+<body>
+    <div class="background-animation"></div>
+    <div class="container">
+        <h1>Gửi tặng MiNu</h1>
+        <img class="lantern" src="https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExdmhvOTh6aHgybzk4OGxzZTN2aW9iN2JtZWVnNHQ2cDVzM3E0a2MxNiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/gFjqVrBTw1zNPhd7Ms/giphy.gif" alt="Đèn lồng Trung Thu" style="width: 150px;">
+        <p>Chúc em yêu có một ngày Trung Thu thật vui vẻ và ấm áp nhe! Anh luôn ở đây, yêu em nhiều! <i class="fa-solid fa-heart"></i></p>
+        <button id="loveButton">Send My Love To MiNu</button>
+    </div>
+
+    <!-- Nhạc nền -->
+    <audio autoplay>
+        <source src="i-want-you-to-know-i-love-you-the-most-whatapps-status-lyrice (1).mp3" type="audio/mp3">
+        Trình duyệt của bạn không hỗ trợ phát nhạc.
+    </audio>
+
+    <script>
+        document.getElementById('loveButton').addEventListener('click', function() {
+            // Xóa tất cả trái tim cũ trước khi tạo mới
+            const existingHearts = document.querySelectorAll('.heart');
+            existingHearts.forEach(heart => heart.remove());
+
+            // Tạo nhiều trái tim
+            for (let i = 0; i < 30; i++) {
+                const heart = document.createElement('div');
+                heart.classList.add('heart');
+                heart.innerText = '❤️';
+                heart.style.top = `${Math.random() * 100}vh`;
+                heart.style.left = `${Math.random() * 100}vw`;
+                heart.style.fontSize = `${Math.random() * 2 + 1}em`;
+                heart.style.opacity = 1;
+                document.body.appendChild(heart);
+
+                // Hiệu ứng nhấp nháy cho trái tim
+                setTimeout(() => {
+                    heart.style.opacity = 0;
+                    setTimeout(() => heart.remove(), 500);
+                }, Math.random() * 2000);
+            }
+        });
+    </script>
+</body>
+</html>
